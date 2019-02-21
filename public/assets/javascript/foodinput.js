@@ -31,6 +31,7 @@ $(document).ready(function () {
         })
         .then((mealEntry) => {
           console.log("items submitted");
+          //add a popover on the textbox or something to make it look cool
           $("#foodFormEntry").val("");
         });
     }
@@ -73,11 +74,6 @@ $(document).ready(function () {
         viewLeftovers();
         break;
 
-      case "devoured":
-        console.log("all the stuff u devoured");
-        viewDevoured();
-        break;
-
       default:
         console.log("Select a view.");
         break;
@@ -90,7 +86,7 @@ $(document).ready(function () {
 
     // make ajax call to view all
     $.ajax({
-        url: "/api/mealsEaten",
+        url: "/api/mealsEaten/",
         method: "GET"
       })
       .then(foodResponse => {
@@ -108,14 +104,14 @@ $(document).ready(function () {
 
 const viewHomeCook = () => {
   $.ajax({
-    url: "api/homeCooked",
+    url: "api/homeCooked/",
     method: "GET"
   })
   .then(homeCookResponse => {
     $("#viewEatenFoods").empty();
 
     homeCookResponse.forEach((food, index) => {
-      const $li = $(`<li class='list-group-item list-group-item-action list-group-item-success text-center font-weight-bold' id=${index + 1}>`);
+      const $li = $(`<li class='list-group-item list-group-item-action list-group-item-primary text-center font-weight-bold' id=${index + 1}>`);
       $("#viewEatenFoods").append($li.text(food.meal));
     });
   });
@@ -123,21 +119,62 @@ const viewHomeCook = () => {
 
 const viewOrderedOut = () => {
   $.ajax({
-    url: "api/orderedOut",
+    url: "api/orderedOut/",
     method: "GET"
   })
   .then(orderedResponse => {
     $("#viewEatenFoods").empty();
 
     orderedResponse.forEach((food, index) => {
-      const $li = $(`<li class='list-group-item list-group-item-action list-group-item-danger text-center font-weight-bold' id=${index + 1}>`);
+      const $li = $(`<li class='list-group-item list-group-item-action list-group-item-secondary text-center font-weight-bold' id=${index + 1}>`);
       $("#viewEatenFoods").append($li.text(food.meal));
     });
   });
 }
 
 const viewVegetarian = () => {
-  console.log("test");
+  $.ajax({
+    url: "/api/vegetarian/",
+    method: "GET"
+  })
+  .then(vegeResponse => {
+    $("#viewEatenFoods").empty();
+    
+    vegeResponse.forEach((food, index) => {
+      const $li = $(`<li class='list-group-item list-group-item-action list-group-item-success text-center font-weight-bold' id=${index + 1}>`);
+    $("#viewEatenFoods").append($li.text(food.meal));
+    });
+  });
 }
+
+const viewMeaty = () => {
+  $.ajax({
+    url: "/api/withMeat",
+    method: "GET"
+  })
+  .then(meatsponse => {
+    $("#viewEatenFoods").empty();
+
+    meatsponse.forEach((food, index) => {
+      const $li = $(`<li class='list-group-item list-group-item-action list-group-item-danger text-center font-weight-bold' id=${index + 1}>`);
+      $("#viewEatenFoods").append($li.text(food.meal));
+    })
+  })
+}
+
+const viewLeftovers = () => {
+  $.ajax({
+    url: "/api/leftovers",
+    method: "GET"
+  })
+  .then(leftovers => {
+    $("#viewEatenFoods").empty();
+    leftovers.forEach((food, index) => {
+      const $li = $(`<li class='list-group-item list-group-item-action list-group-item-dark text-center font-weight-bold' id=${index + 1}>`);
+      $("#viewEatenFoods").append($li.text(food.meal));
+    });
+  });
+}
+
 
 }); //end of ready function
