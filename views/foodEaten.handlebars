@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  <link rel="stylesheet" href="">
+  <title>Title</title>
+</head>
+
+<body class="bg-dark">
+
+  <div class="container my-5">
+    <div class="jumbotron bg-primary">
+      <div class="text-center font-weight-bold display-4">
+        My food log
+      </div>
+      <hr>
+      <p class="text-center">Something I made to kind of keep track of what I eat throughout the day.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card bg-success">
+      <div class="card-body">
+        <form class="form-group">
+          <label class="mr-sm-2 font-weight-bold" for="foodFormEntry">Enter food here!</label>
+          <input type="text" class="form-control mb-2 mr-sm-2" id="foodFormEntry" placeholder="Enter food here">
+
+          <label class="mr-sm-2 font-weight-bold" for="homeCookedOrNot">Was this meal home cooked?</label>
+          <select class="custom-select mr-sm-2" id="homeCookedOrNot">
+            <option value="1">Home cooked</option>
+            <option value="0">Ordered out</option>
+          </select>
+
+          <label class="mr-sm-2 font-weight-bold" for="vegetarianOrNot">Was your meal vegetarian?</label>
+          <select class="custom-select mr-sm-2" id="vegetarianOrNot">
+            <option value="1">Yep</option>
+            <option value="0">Nah, not this time</option>
+          </select>
+
+          <label class="mr-sm-2 font-weight-bold" for="leftoversOrNot">Any leftovers?</label>
+          <select class="custom-select mr-sm-2" id="leftoversOrNot">
+            <option value="1">Yes</option>
+            <option value="0">No, I was a fatty today.</option>
+          </select>
+
+          <button type="submit" class="btn btn-primary my-3" id="submitMeal">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card mt-5 bg-info">
+      <div class="card-body">
+        <form class="form-group">
+          <label class="mr-sm-2 font-weight-bold" for="sortViewsBy">View eaten foods by category!</label>
+          <select class="custom-select mr-sm-2" id="sortViewsBy">
+            <option selected>Select view parameters...</option>
+            <option class="viewParams" value="all">View all</option>
+            <option class="viewParams" value="homeCook">Home cooked</option>
+            <option class="viewParams" value="orderedOut">Ordered out</option>
+            <option class="viewParams" value="vegetarian">Vegetarian</option>
+            <option class="viewParams" value="meaty">Non-vegetarian</option>
+            <option class="viewParams" value="leftovers">Leftovers</option>
+            <option class="viewParams" value="devoured">Completely finished</option>
+          </select>
+          <button type="submit" class="btn btn-danger my-3" id="viewFoods">View foods</button>
+        </form>
+        <div id="viewEatenFoods"></div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  <script src="/assets/javascript/foodinput.js"></script>
+</body>
+
+</html>
