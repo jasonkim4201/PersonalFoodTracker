@@ -136,6 +136,8 @@ const viewOrderedOut = () => {
   });
 }
 
-
+const viewVegetarian = () => {
+  
+}
 
 }); //end of ready function
